@@ -140,7 +140,13 @@ const handleRegister = async () => {
   loading.value = true;
 
   try {
-    await api.post("/auth/register", form);
+    const payload = {
+      name: `${form.first_name} ${form.last_name}`.trim(),
+      email: form.email,
+      password: form.password,
+      password_confirmation: form.password_confirmation
+    };
+    await api.post("/auth/register", payload);
     router.push("/login");
   } catch (err: any) {
     error.value =
