@@ -60,9 +60,12 @@
             >
               Admin Panel
             </router-link>
-            <span class="text-sm font-medium text-gray-700">
-              Hi, {{ authStore.user?.first_name }}
-            </span>
+            <router-link
+              to="/profile"
+              class="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+            >
+              Hi, {{ authStore.user?.first_name || authStore.user?.name }}
+            </router-link>
             <button
               @click="handleLogout"
               class="text-sm font-medium text-gray-500 hover:text-red-600 transition-colors"
