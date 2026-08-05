@@ -6,22 +6,18 @@ namespace App\Enums;
 
 enum PaymentMethod: string
 {
-    case COD      = 'cod';
-    case Stripe   = 'stripe';
-    case Razorpay = 'razorpay';
+    case Stripe = 'stripe';
 
     public function label(): string
     {
         return match($this) {
-            self::COD      => 'Cash on Delivery',
-            self::Stripe   => 'Stripe',
-            self::Razorpay => 'Razorpay',
+            self::Stripe => 'Stripe',
         };
     }
 
     public function requiresOnlineProcessing(): bool
     {
-        return $this !== self::COD;
+        return true;
     }
 
     /** @return string[] */
